@@ -13,6 +13,7 @@ module Program =
     open System
     open System.Diagnostics
     open System.IO
+    open System.Globalization
     open Projeto2.DataLoader
     open Projeto2.ParallelRunner
 
@@ -32,17 +33,17 @@ module Program =
 
         let linhas =
             [
-                "Ticker,Peso"
+                "Ticker;Peso"
                 yield!
                     List.zip resultado.Carteira.Ativos resultado.Carteira.Pesos
                     |> List.map (fun (ticker, peso) ->
-                        $"{ticker},{peso}"
+                        $"{ticker};{peso.ToString("G17", CultureInfo.InvariantCulture)}"
                     )
 
                 ""
-                $"RetornoAnualizado,{resultado.RetornoAnualizado}"
-                $"VolatilidadeAnualizada,{resultado.VolatilidadeAnualizada}"
-                $"Sharpe,{resultado.Sharpe}"
+                $"RetornoAnualizado;{resultado.RetornoAnualizado.ToString("G17", CultureInfo.InvariantCulture)}"
+                $"VolatilidadeAnualizada;{resultado.VolatilidadeAnualizada.ToString("G17", CultureInfo.InvariantCulture)}"
+                $"Sharpe;{resultado.Sharpe.ToString("G17", CultureInfo.InvariantCulture)}"
             ]
 
         File.WriteAllLines(caminho, linhas)

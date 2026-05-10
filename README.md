@@ -14,12 +14,12 @@ Simulação paralela de Monte Carlo para encontrar a melhor carteira de investim
 
 ## Requisitos e Dependências
 - **.NET SDK 10.0+** para compilar e executar o código F#.
-- Arquivo de dados históricos: `Projeto2/data/dow30_returns.csv` (fornecido pelo professor).
+- Arquivo de dados históricos: `Projeto2/data/dow30_returns.csv`.
 
 ## Como Instalar e Executar
 
 ### 1. Preparar os Dados
-Coloque o arquivo `dow30_returns.csv` fornecido pelo professor em `Projeto2/data/`.
+Coloque o arquivo `dow30_returns.csv`em `Projeto2/data/`.
 ```
 Projeto2/
 └── data/
@@ -74,3 +74,39 @@ O tempo de execução depende do modo escolhido:
 - **Paralelismo**: Avaliação de combinações usa `Array.Parallel.choose` para multithreading seguro.
 - **Amostragem Controlada**: Após gerar todas as combinações, amostra um subconjunto determinístico (seed fixa).
 - **Modo Leve**: Prioriza execução viável em máquina comum sem sacrificar a lógica funcional.
+
+## Exemplo de Saída
+O arquivo [Projeto2/results/best_result.csv](Projeto2/results/best_result.csv) contém a carteira ótima encontrada. Exemplo (conteúdo atual):
+
+```csv
+Ticker;Peso
+AAPL;0.07012496988980142
+AMZN;0.05082845679309806
+AXP;0.02931277236380093
+BA;0.0024618317701733585
+CAT;0.06808520565858425
+CRM;0.026684659360539993
+CSCO;0.02893871973885218
+CVX;0.03902987359569539
+DIS;0.005814640752526529
+GS;0.04292373608701772
+HON;0.003738495408560859
+IBM;0.018303283774115785
+JNJ;0.07340773261085094
+JPM;0.06848959405881537
+KO;0.04383339583736551
+MCD;0.04666957929750035
+MMM;0.06366498754650465
+MRK;0.06811350205464509
+MSFT;0.026926969802926887
+NVDA;0.062420380074920255
+PG;0.0034453535008677253
+TRV;0.05997475185385308
+UNH;0.0032694644016731645
+VZ;0.014011071067334083
+WMT;0.07952657269997657
+
+RetornoAnualizado;0.3313569105802629
+VolatilidadeAnualizada;0.08909438461156657
+Sharpe;3.719167173384852
+```
